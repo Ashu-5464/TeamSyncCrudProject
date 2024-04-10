@@ -53,9 +53,10 @@ const Leave = () => {
 }
 
 
-const onEdit=(leaveObj)=>
+const onEdit=(leave)=>
 {
-    setleaveObj(leaveObj);
+    const formattedDate = leave. leaveDate.split('T')[0];
+    setleaveObj({ ...leave, leaveDate: formattedDate });
 }
 const updateLeave=async()=>
 {
@@ -85,22 +86,22 @@ const deleteLeave=async(leaveId)=>
 }
     return (
         <div>
-             <div className='row mt-3'>
+             <div className='row '>
                 <div className='col-8'>
                  <div className='card'>
                     <div className='card header bg-warning'>
                     Leave List
                     </div>
-                        <div className='card-body'>
-                        <table className='table table-bordered'>
+                        
+                        <table className='table table-bordered mt-4'>
                         <thead>
                         <tr>
-                            <th>Sr no</th>
-                            <th>Leaves Date</th>
-                            <th>Leaves Reason</th>
-                            <th>No of Full DayLeaves</th>
-                            <th>No of Half DayLeaves</th>
-                            <th>Action</th>
+                            <th style={{backgroundColor:'green'}}>Sr no</th>
+                            <th style={{backgroundColor:'green'}}>Leaves Date</th>
+                            <th style={{backgroundColor:'green'}}>Leaves Reason</th>
+                            <th style={{backgroundColor:'green'}}>No of Full DayLeaves</th>
+                            <th style={{backgroundColor:'green'}}>No of Half DayLeaves</th>
+                            <th style={{backgroundColor:'green'}}>Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -109,7 +110,7 @@ const deleteLeave=async(leaveId)=>
                             {
                                 return(<tr key={index}>
                                     <td>{index+1}</td>
-                                    <td>{leave.leaveDate}</td>
+                                    <td>{leave.leaveDate.split('T')[0]}</td>
                                     <td>{leave.leaveReason}</td>
                                     <td>{leave.noOfFullDayLeaves}</td>
                                     <td>{leave.noOfHalfDayLeaves}</td>
@@ -124,7 +125,7 @@ const deleteLeave=async(leaveId)=>
                       </table>
                     </div>
                    </div>
-                  </div>
+                
             
                 <div className='col-4'>
                   <div className='card'>

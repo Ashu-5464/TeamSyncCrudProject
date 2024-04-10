@@ -64,9 +64,11 @@ const saveAttendance= async()=>
 setShow(false);
 };
 
-const editAttendance=async(attendanceObj)=>
+const editAttendance=async(attendance)=>
 {
-      setAttendanceObj(attendanceObj);
+    const formattedDate = attendance. attendanceDate.split('T')[0];
+    setAttendanceObj({ ...attendance, attendanceDate: formattedDate });
+
 }
 
 const updateAttendance = async () => {
@@ -117,18 +119,18 @@ const deleteAttendance = async (attendanceId) => {
                         Attendance List
                     </div>
                     <div className='card-body'>
-                        <div className='table-responsive'>
+                        
                             <table className='table table-bordered'>
                                 <thead>
                                     <tr>
-                                        <th>Sr.No</th>
-                                        <th>Employee</th>
-                                        <th>Contact No.</th>
-                                        <th>Attendance Date</th>
-                                        <th>In Time</th>
-                                        <th>Out Time</th>
-                                        <th>Is FullDay</th>
-                                        <th>Action</th>
+                                        <th style={{backgroundColor:'green'}}>Sr.No</th>
+                                        <th style={{backgroundColor:'green'}}>Employee</th>
+                                        <th style={{backgroundColor:'green'}}>Contact No.</th>
+                                        <th style={{backgroundColor:'green'}}>Attendance Date</th>
+                                        <th style={{backgroundColor:'green'}}>In Time</th>
+                                        <th style={{backgroundColor:'green'}}>Out Time</th>
+                                        <th style={{backgroundColor:'green'}}>Is FullDay</th>
+                                        <th style={{backgroundColor:'green'}}>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -137,9 +139,9 @@ const deleteAttendance = async (attendanceId) => {
                                             <td>{index+1}</td>
                                             <td>{attendance.empName}</td>
                                             <td>{attendance.empContactNo}</td>
-                                            <td>{attendance.attendanceDate}</td>
-                                            <td>{attendance.inTime}</td>
-                                            <td>{attendance.outTime}</td>
+                                            <td>{attendance.attendanceDate.split('T')[0]}</td>
+                                            <td>{attendance.inTime.split('T')[0]}</td>
+                                            <td>{attendance.outTime.split('T')[0]}</td>
                                             <td>{attendance.isFullDay ? 'Yes' : 'No'}</td>
                                             <td>
                                         <button className="btn btn-sm btn-success m-2" onClick={() => editAttendance(attendance)}> Edit </button>
@@ -151,7 +153,7 @@ const deleteAttendance = async (attendanceId) => {
                             </table>
                         </div>
                     </div>
-                </div>
+                
             </div>
                 <div className='col-md-4'>
                     <div className='card '>

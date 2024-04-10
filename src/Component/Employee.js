@@ -79,8 +79,8 @@ const Employee = () => {
         );
     }
 
-    const onEdit = (employeeObj) => {
-        setEmployeeObj(employeeObj);
+    const onEdit = (employee) => {
+        setEmployeeObj(employee);
     }
 
     const userUpdate = async () => {
@@ -117,23 +117,23 @@ const Employee = () => {
 
     return (
         <div>
-            <div className='row mt-3'>
+            <div className='row '>
                 <div className='col-8'>
                     <div className='card'>
                         <div className='card-heading bg-warning'>
                             Employee List
                         </div>
                         <div className='card-body'>
-                            <table className='table table-bordered'>
+                            <table className='table table-bordered '>
                                 <thead>
                                     <tr>
-                                        <th>Sr.No</th>
-                                        <th>Name</th>
-                                        <th>Contact No</th>
-                                        <th>Email</th>
-                                        <th>City</th>
-                                        <th>Salary</th>
-                                        <th>Action</th>
+                                        <th style={{backgroundColor:'green'}}>Sr.No</th>
+                                        <th style={{backgroundColor:'green'}}>Name</th>
+                                        <th style={{backgroundColor:'green'}}>Contact No</th>
+                                        <th style={{backgroundColor:'green'}}>Email</th>
+                                        <th style={{backgroundColor:'green'}}>City</th>
+                                        <th style={{backgroundColor:'green'}}>Salary</th>
+                                        <th style={{backgroundColor:'green'}}>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

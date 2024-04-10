@@ -48,9 +48,9 @@ const addSalary=async()=>
 
 const onEditSalary=(salary)=>
 {
-      setsalaryObj(salary)
+    const formattedDate = salary.salaryDate.split('T')[0];
+    setsalaryObj({ ...salary, salaryDate: formattedDate });
 }
-
 const updateSalary=async()=>
 {
      const result= await axios.post("https://onlinetestapi.gerasim.in/api/TeamSync/UpdateSalary",salaryObj);
@@ -85,17 +85,17 @@ const onDeleteSalary=async(salaryId)=>
                     <div className='card-header bg-warning'>
                         Salary
                         </div>
-                        <table className='table table-bordered'>
+                        <table className='table table-bordered mt-4'>
                           <thead>
                             <tr>
-                                <th>Sr no</th>
-                                <th>Employee Name</th>
-                                <th>Employee Contact no</th>
-                                <th>Salary date</th>
-                                <th>Present date</th>
-                                <th>Salary amount</th>
-                                <th>Salary advance</th>
-                                <th>Action  </th>
+                                <th style={{backgroundColor:'green'}}>Sr no</th>
+                                <th style={{backgroundColor:'green'}}>Employee Name</th>
+                                <th style={{backgroundColor:'green'}}>Employee Contact no</th>
+                                <th style={{backgroundColor:'green'}}>Salary date</th>
+                                <th style={{backgroundColor:'green'}}>Present date</th>
+                                <th style={{backgroundColor:'green'}}>Salary amount</th>
+                                <th style={{backgroundColor:'green'}}>Salary advance</th>
+                                <th style={{backgroundColor:'green'}}>Action  </th>
                             </tr>
                           </thead>
                           <tbody>
@@ -105,8 +105,10 @@ const onDeleteSalary=async(salaryId)=>
                                             <tr>
                                                 <td>{index + 1}</td>
                                                 <td>{salary.empName}</td>
-                                                <td>{salary.salaryDate.split('T')[0]}</td>
+                                               
+                                              
                                                 <td>{salary.totalAdvance}</td>
+                                                <td>{salary.salaryDate.split('T')[0]}</td>
                                                 <td>{salary.presentDays}</td>
                                                 <td>{salary.salaryAmount}</td>
                                                 <td>{salary.totalAdvance}</td>

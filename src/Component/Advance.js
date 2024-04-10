@@ -50,8 +50,10 @@ const Addemp = async () => {
     }
 
 }
-const onEdit=(advance)=>{
-    setadvanceObj(advance);
+const onEdit = (advance) => {
+    // Format date before setting it to advanceObj
+    const formattedDate = advance.advanceDate.split('T')[0];
+    setadvanceObj({ ...advance, advanceDate: formattedDate });
 }
 
 const updateAdvance=async()=>
@@ -81,23 +83,23 @@ const onDelete=async(advanceId)=>
 }
     return (
         <div>
-            <div className='row mt-3'>
+            <div className='row'>
                 <div className='col-8'>
                  <div className='card'>
                     <div className='card header bg-warning'>
                         Advance List
                        </div>
                        
-                        <table className='table table-bordered'>
+                        <table className='table table-bordered mt-4'>
                                 <thead>
                                     <tr>
-                                        <th>Sr no</th>
-                                        <th>Emp name</th>
-                                        <th>Emp contactno</th>
-                                        <th>Advance Date</th>
-                                        <th>Advance amount</th>
-                                        <th>Reason</th>
-                                        <th>Action</th>
+                                        <th style={{backgroundColor:'green'}}>Sr no</th>
+                                        <th style={{backgroundColor:'green'}}>Emp name</th>
+                                        <th style={{backgroundColor:'green'}}>Emp contactno</th>
+                                        <th style={{backgroundColor:'green'}}>Advance Date</th>
+                                        <th style={{backgroundColor:'green'}}>Advance amount</th>
+                                        <th style={{backgroundColor:'green'}}>Reason</th>
+                                        <th style={{backgroundColor:'green'}}>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -108,7 +110,7 @@ const onDelete=async(advanceId)=>
                                             <td>{index+1}</td>
                                             <td>{advance.empName}</td>
                                             <td>{advance.empContactNo}</td>
-                                            <td>{advance.advanceDate}</td>
+                                            <td>{advance.advanceDate.split('T')[0]}</td>
                                             <td>{advance.advanceAmount}</td>
                                             <td>{advance.reason}</td>
                                             <td>
@@ -153,8 +155,8 @@ const onDelete=async(advanceId)=>
                     <div className='row'>
                         <div className='col-6'>
                           <label>Advance Date</label>
-                          <input type='Date' name='advanceDate' value={advanceObj.advanceDate}  className='form-control'
-                          onChange={(event)=>handleChange(event,'advanceDate')}/>
+                          <input type='date' name='advanceDate' value={advanceObj.advanceDate} className='form-control'
+                                        onChange={(event) => handleChange(event, 'advanceDate')} />
                         </div>
                         <div className='col-6'>
                          <label>Advance Amount</label>
